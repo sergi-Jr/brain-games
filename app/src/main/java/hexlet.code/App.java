@@ -5,10 +5,9 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         var scanner = new Scanner(System.in);
-        var greeter = new Greeter(scanner);
 
         System.out.println("Please enter the game number and press Enter.");
-        System.out.print("1 - Greet\n 2 - Even\n 0 - Exit\n");
+        System.out.print("1 - Greet\n 2 - Even\n 3 - Calc\n 0 - Exit\n");
 
         var choice = scanner.nextLine();
 
@@ -16,14 +15,19 @@ public class App {
 
         switch (choice) {
             case ("1"): //greet message
-                greeter.greet();
+                var simpleGreeter = new Greeter(scanner);
                 break;
             case ("2"): //Even game choice
-                greeter.greet();
-                var evenGame = new Even(greeter.getName(), scanner);
+                var evenGameGreeter = new Greeter(scanner);
+                var evenGame = new Even(evenGameGreeter.getName(), scanner);
                 evenGame.start();
-                break; //Exit choice or unexpected input string
-            default:
+                break;
+            case ("3"): //Calc game choice
+                var calcGameGreeter = new Greeter(scanner);
+                var calcGame = new Calc(calcGameGreeter.getName(), scanner);
+                calcGame.start();
+                break;
+            default: //Exit choice or unexpected input string
                 break;
         }
     }
