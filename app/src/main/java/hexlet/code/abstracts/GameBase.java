@@ -24,8 +24,10 @@ public abstract class GameBase {
         this.successCount = 0;
         this.random = new Random();
     }
+
     /**
      * start Game contract method
+     * @param name Name entered by user
      */
     public abstract void start(String name);
 
