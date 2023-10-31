@@ -2,34 +2,36 @@ package hexlet.code;
 
 import hexlet.code.games.Calc;
 import hexlet.code.games.Even;
+import hexlet.code.games.GCD;
 
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        var scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Please enter the game number and press Enter.");
-        System.out.print("1 - Greet\n 2 - Even\n 3 - Calc\n 0 - Exit\n");
+        System.out.print("1 - Greet\n2 - Even\n3 - Calc\n4 - GCD\n0 - Exit\n");
 
-        var choice = scanner.nextLine();
+        String choice = scanner.nextLine();
 
         System.out.println("Your choice: " + choice);
 
         switch (choice) {
             case ("1"): //greet message
-                var simpleGreeter = new Greeter(scanner);
+                Greeter.greet(scanner);
                 break;
             case ("2"): //Even game choice
-                var evenGameGreeter = new Greeter(scanner);
-                var evenGame = new Even(evenGameGreeter.getName(), scanner);
-                evenGame.start();
+                Even evenGame = new Even(scanner);
+                Engine.execute(evenGame);
                 break;
             case ("3"): //Calc game choice
-                var calcGameGreeter = new Greeter(scanner);
-                var calcGame = new Calc(calcGameGreeter.getName(), scanner);
-                calcGame.start();
+                Calc calcGame = new Calc(scanner);
+                Engine.execute(calcGame);
                 break;
+            case ("4"): //GCD game choice
+                GCD gcdGame = new GCD(scanner);
+                Engine.execute(gcdGame);
             default: //Exit choice or unexpected input string
                 break;
         }
