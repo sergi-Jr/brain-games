@@ -3,4 +3,5 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/f63ea09d086178e5ee48/maintainability)](https://codeclimate.com/github/sergi-Jr/java-project-61/maintainability)
 ![Static Badge](https://img.shields.io/badge/evenGame-red?link=https%3A%2F%2Fasciinema.org%2Fa%2Fdl7hgxeuSxUjKJWznpWQxqFwG)
 ![Static Badge](https://img.shields.io/badge/calcGame-green?link=https%3A%2F%2Fasciinema.org%2Fa%2F6yz451C1ntU2H92syLqBo8nQI)
+![Static Badge](https://img.shields.io/badge/gcd-blue?link=https%3A%2F%2Fasciinema.org%2Fa%2FzR1MVOsPBDj6ZhEZJ6KKfVabi)
 
