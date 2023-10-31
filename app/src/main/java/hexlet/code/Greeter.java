@@ -1,29 +1,27 @@
 package hexlet.code;
 
-import hexlet.code.abstracts.InitBase;
-
 import java.util.Scanner;
 
 /**
- * User greeting class
+ * User greeting utility class
  */
-public final class Greeter extends InitBase {
-    /**
-     * Parameterized extended class cctor
-     * @param scanner Standard console input object ref
-     */
-    public Greeter(Scanner scanner) {
-        super(scanner);
-        greet();
-    }
-
+public final class Greeter {
+    private static String name;
     /**
      * Local username request method
      */
-    private void greet() {
+    public static void greet(Scanner scanner) {
         System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
         name = scanner.nextLine();
         System.out.println("Hello, " + name + "!");
+    }
+
+    /**
+     * Username field getter
+     * @return Name field
+     */
+    public static String getName() {
+        return name;
     }
 }
