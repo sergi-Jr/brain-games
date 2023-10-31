@@ -1,40 +1,39 @@
 package hexlet.code.games;
 
 import hexlet.code.abstracts.GameBase;
-import hexlet.code.abstracts.IGame;
+
 import java.util.Scanner;
 
 /**
  * Class provides "Even" game logic, consisting in providing the user with
  * the opportunity to answer the question about the parity of the number
  */
-public class Even extends GameBase implements IGame {
+public class Even extends GameBase {
     /**
      * Parameterized extended class cctor
-     * @param name Entered user name
      * @param scanner Standard console input object ref
      */
-    public Even(String name, Scanner scanner) {
-        super(name, scanner);
+    public Even(Scanner scanner) {
+        super(scanner);
     }
 
     @Override
-    public void start() {
-        var succesCount = 0;
+    public void start(String name) {
+        this.name = name;
 
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
-        while (succesCount < MAX_SUCCESS_COUNT && succesCount >= 0) {
-            var currentRnd = random.nextInt(MIN_RANDOM_NUM, MAX_RANDOM_NUM + 1);
-            var solution = currentRnd % 2;
+        while (this.successCount < MAX_SUCCESS_COUNT && this.successCount >= 0) {
+            int currentRnd = random.nextInt(MIN_RANDOM_NUM, MAX_RANDOM_NUM + 1);
+            int solution = currentRnd % 2;
 
             System.out.println("Question: " + currentRnd);
             System.out.print("Your answer: ");
-            var userSuggestion = scanner.nextLine();
+            String userSuggestion = scanner.nextLine();
 
-            succesCount = handleSuggestion(userSuggestion, solution, succesCount);
+            this.successCount = handleSuggestion(userSuggestion, solution, this.successCount);
         }
-        if(succesCount == MAX_SUCCESS_COUNT) {
+        if(this.successCount == MAX_SUCCESS_COUNT) {
             System.out.println("Congratulations, " + name + "!");
         }
     }

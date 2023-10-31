@@ -1,40 +1,39 @@
 package hexlet.code.games;
 
 import hexlet.code.abstracts.GameBase;
-import hexlet.code.abstracts.IGame;
+
 import java.util.Scanner;
 
-public class Calc extends GameBase implements IGame {
+public class Calc extends GameBase {
     private final String[] operators = new String[] {"-", "+", "*"}; //Available math operators array
 
     /**
      * Parameterized extended class cctor
-     * @param name Entered user name
      * @param scanner Standard console input object ref
      */
-    public Calc(String name, Scanner scanner) {
-        super(name, scanner);
+    public Calc(Scanner scanner) {
+        super(scanner);
     }
     @Override
-    public void start() {
-        var succesCount = 0;
+    public void start(String name) {
+        this.name = name;
 
         System.out.println("What is the result of the expression?");
 
-        while (succesCount < MAX_SUCCESS_COUNT && succesCount >= 0) {
-            var leftOperand = random.nextInt(MIN_RANDOM_NUM, MAX_RANDOM_NUM + 1);
-            var rightOperand = random.nextInt(MIN_RANDOM_NUM, MAX_RANDOM_NUM + 1);
-            var operator = getRandomOperation();
-            var statement = leftOperand + " " + operator + " " + rightOperand;
-            var solution = resolveStatement(leftOperand, rightOperand, operator);
+        while (this.successCount < MAX_SUCCESS_COUNT && this.successCount >= 0) {
+            int leftOperand = random.nextInt(MIN_RANDOM_NUM, MAX_RANDOM_NUM + 1);
+            int rightOperand = random.nextInt(MIN_RANDOM_NUM, MAX_RANDOM_NUM + 1);
+            String operator = getRandomOperation();
+            String statement = leftOperand + " " + operator + " " + rightOperand;
+            int solution = resolveStatement(leftOperand, rightOperand, operator);
 
             System.out.println("Question: " + statement);
             System.out.print("Your answer: ");
-            var userSuggestion = scanner.nextLine();
+            String userSuggestion = scanner.nextLine();
 
-            succesCount = handleSuggestion(userSuggestion, solution, succesCount);
+            this.successCount = handleSuggestion(userSuggestion, solution, this.successCount);
         }
-        if(succesCount == MAX_SUCCESS_COUNT) {
+        if(this.successCount == MAX_SUCCESS_COUNT) {
             System.out.println("Congratulations, " + name + "!");
         }
     }
@@ -62,13 +61,13 @@ public class Calc extends GameBase implements IGame {
 
     /**
      * Local method to resolve math expression
-     * @param leftOperand Left expression operand
-     * @param rightOperand Right expression operand
+     * @param leftOperand expression Left operand
+     * @param rightOperand  expression Right  operand
      * @param operator Math operator in String format
      * @return Statement solution
      */
     private int resolveStatement(int leftOperand, int rightOperand, String operator) {
-        var result = 0;
+        int result = 0;
         switch (operator) {
             case ("+"):
                 result = leftOperand + rightOperand;
