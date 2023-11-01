@@ -4,12 +4,12 @@ import hexlet.code.abstracts.GameBase;
 import java.util.Scanner;
 
 /**
- * Class provides "Greater common divisor" (GCD) game logic, consisting in providing the user with
- * the opportunity to answer the question about the finding greater common divisor
+ * Class provides "Greater common divisor" (GCD) game logic.
+ * Consists in providing the user with the opportunity to answer the question about the finding greater common divisor
  */
 public class GCD extends GameBase {
     /**
-     * Parameterized extended cctor
+     * Parameterized extended cctor.
      * @param scanner Standard console input object ref
      */
     public GCD(Scanner scanner) {
@@ -22,9 +22,9 @@ public class GCD extends GameBase {
 
         System.out.println("Find the greatest common divisor of given numbers.");
 
-        while (this.successCount < MAX_SUCCESS_COUNT && this.successCount >= 0) {
-            var leftOperand = random.nextInt(MIN_RANDOM_NUM, MAX_RANDOM_NUM + 1);
-            var rightOperand = random.nextInt(MIN_RANDOM_NUM, MAX_RANDOM_NUM + 1);
+        while (this.successCount < MAX_SUCCESSES && this.successCount >= 0) {
+            var leftOperand = random.nextInt(MIN_RANDOM, MAX_RANDOM + 1);
+            var rightOperand = random.nextInt(MIN_RANDOM, MAX_RANDOM + 1);
             var statement = leftOperand + " " + rightOperand;
             var solution = resolveStatement(leftOperand, rightOperand);
 
@@ -34,7 +34,7 @@ public class GCD extends GameBase {
 
             this.successCount = handleSuggestion(userSuggestion, solution, this.successCount);
         }
-        if(this.successCount == MAX_SUCCESS_COUNT) {
+        if (this.successCount == MAX_SUCCESSES) {
             System.out.println("Congratulations, " + name + "!");
         }
     }
@@ -45,15 +45,15 @@ public class GCD extends GameBase {
             System.out.println("Correct!");
             return ++count;
         }
-        System.out.println("'" + suggestion + "' " + "is wrong answer ;(. " +
-                "Correct answer was " + number);
+        System.out.println("'" + suggestion + "' " + "is wrong answer ;(. "
+                + "Correct answer was " + number);
         System.out.println("Let's try again, " + name + "!");
         count = -1;
         return count;
     }
 
     /**
-     * Local method to resolve math expression
+     * Local method to resolve math expression.
      * @param leftOperand expression Left operand
      * @param rightOperand  expression Right  operand
      * @return Statement solution

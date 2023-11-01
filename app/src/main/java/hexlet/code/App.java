@@ -9,42 +9,42 @@ import hexlet.code.games.Progression;
 import java.util.Scanner;
 
 public class App {
-    private final static Scanner scanner = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in);
     public static void main(String[] args) {
         System.out.println("Please enter the game number and press Enter.");
         System.out.print("1 - Greet\n2 - Even\n3 - Calc\n4 - GCD\n5 - Progression\n6 - Prime\n0 - Exit\n");
 
-        String choice = scanner.nextLine();
+        String choice = SCANNER.nextLine();
 
         System.out.println("Your choice: " + choice);
         gameSwitcher(choice);
     }
 
     /**
-     * Method launches required game by user choice
+     * Method launches required game by user choice.
      * @param choice User entered choice
      */
     private static void gameSwitcher(String choice) {
         switch (choice) {
             case ("1"): //greet message
-                Greeter.greet(scanner);
+                Greeter.greet(SCANNER);
                 break;
             case ("2"): //Even game choice
-                Even evenGame = new Even(scanner);
+                Even evenGame = new Even(SCANNER);
                 Engine.execute(evenGame);
                 break;
             case ("3"): //Calc game choice
-                Calc calcGame = new Calc(scanner);
+                Calc calcGame = new Calc(SCANNER);
                 Engine.execute(calcGame);
                 break;
             case ("4"): //GCD game choice
-                GCD gcdGame = new GCD(scanner);
+                GCD gcdGame = new GCD(SCANNER);
                 Engine.execute(gcdGame);
             case ("5"): //Progression game choice
-                Progression progressionGame = new Progression(scanner);
+                Progression progressionGame = new Progression(SCANNER);
                 Engine.execute(progressionGame);
             case ("6"): //Prime game choice
-                Prime primeGame = new Prime(scanner);
+                Prime primeGame = new Prime(SCANNER);
                 Engine.execute(primeGame);
             default: //Exit choice or unexpected input string
                 break;

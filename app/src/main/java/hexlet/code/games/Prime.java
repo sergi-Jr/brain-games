@@ -9,11 +9,11 @@ import java.util.Scanner;
 import java.util.function.Predicate;
 
 /**
- * Prime game class
+ * Prime game class.
  */
 public class Prime extends GameBase {
     /**
-     * Parameterized extended cctor
+     * Parameterized extended cctor.
      * @param scanner
      */
     public Prime(Scanner scanner) {
@@ -28,7 +28,7 @@ public class Prime extends GameBase {
         this.name = name;
         List<String> primeNumbers = null;
         try {
-            primeNumbers = FileParser.getPrimeNumbers(MAX_RANDOM_NUM);
+            primeNumbers = FileParser.getPrimeNumbers(MAX_RANDOM);
         } catch (IOException e) {
             System.out.println("Couldn't get access to the file.Check path correctness.");
             return;
@@ -36,8 +36,8 @@ public class Prime extends GameBase {
 
         System.out.println("Answer 'yes' if the number is prime, otherwise answer 'no'.");
 
-        while (this.successCount < MAX_SUCCESS_COUNT && this.successCount >= 0) {
-            int currentRnd = random.nextInt(MIN_RANDOM_NUM, MAX_RANDOM_NUM + 1);
+        while (this.successCount < MAX_SUCCESSES && this.successCount >= 0) {
+            int currentRnd = random.nextInt(MIN_RANDOM, MAX_RANDOM + 1);
 
             int solution = resolveStatement(currentRnd, primeNumbers);
 
@@ -47,7 +47,7 @@ public class Prime extends GameBase {
 
             this.successCount = handleSuggestion(userSuggestion, solution, this.successCount);
         }
-        if(this.successCount == MAX_SUCCESS_COUNT) {
+        if (this.successCount == MAX_SUCCESSES) {
             System.out.println("Congratulations, " + name + "!");
         }
     }
@@ -63,15 +63,16 @@ public class Prime extends GameBase {
             return ++count;
         }
         var correctAnswer = suggestion.equals("yes") ? ("'no'") : ("'yes'");
-        System.out.println("'" + suggestion + "' " + "is wrong answer ;(. " +
-                "Correct answer was " + correctAnswer);
+        System.out.println("'" + suggestion + "' " + "is wrong answer ;(. "
+                + "Correct answer was " + correctAnswer);
         System.out.println("Let's try again, " + name + "!");
         count = -1;
         return count;
     }
 
     /**
-     * Method determines that number is prime
+     * Method determines that number is prime.
+     * @param questNum Question randomly generated number
      * @param primes List contains prime numbers
      * @return 0 if number is not prime, 1 otherwise
      */
@@ -83,7 +84,7 @@ public class Prime extends GameBase {
     }
 
     /**
-     * Predicate that determines whether the given number matches an element of the list
+     * Predicate that determines whether the given number matches an element of the list.
      * @param number Number to compare
      * @return Filtered element(S)
      */

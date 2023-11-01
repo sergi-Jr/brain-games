@@ -3,11 +3,11 @@ package hexlet.code;
 import hexlet.code.abstracts.GameBase;
 
 /**
- * Utility class provides games execution
+ * Utility class provides games execution.
  */
 public class Engine {
     /**
-     * Method that launches the game
+     * Method that launches the game.
      * @param game Abstract class GameBase object
      */
     public static void execute(GameBase game) {

@@ -1,14 +1,14 @@
 package hexlet.code;
 
 import java.util.Scanner;
-
 /**
- * User greeting utility class
+ * User greeting utility class.
  */
 public final class Greeter {
     private static String name;
     /**
-     * Local username request method
+     * Local username request method.
+     * @param scanner Standard system input ref object
      */
     public static void greet(Scanner scanner) {
         System.out.println("Welcome to the Brain Games!");
@@ -18,7 +18,7 @@ public final class Greeter {
     }
 
     /**
-     * Username field getter
+     * Username field getter.
      * @return Name field
      */
     public static String getName() {

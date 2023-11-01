@@ -8,7 +8,7 @@ public class Calc extends GameBase {
     private final String[] operators = new String[] {"-", "+", "*"}; //Available math operators array
 
     /**
-     * Parameterized extended class cctor
+     * Parameterized extended class cctor.
      * @param scanner Standard console input object ref
      */
     public Calc(Scanner scanner) {
@@ -20,9 +20,9 @@ public class Calc extends GameBase {
 
         System.out.println("What is the result of the expression?");
 
-        while (this.successCount < MAX_SUCCESS_COUNT && this.successCount >= 0) {
-            int leftOperand = random.nextInt(MIN_RANDOM_NUM, MAX_RANDOM_NUM + 1);
-            int rightOperand = random.nextInt(MIN_RANDOM_NUM, MAX_RANDOM_NUM + 1);
+        while (this.successCount < MAX_SUCCESSES && this.successCount >= 0) {
+            int leftOperand = random.nextInt(MIN_RANDOM, MAX_RANDOM + 1);
+            int rightOperand = random.nextInt(MIN_RANDOM, MAX_RANDOM + 1);
             String operator = getRandomOperation();
             String statement = leftOperand + " " + operator + " " + rightOperand;
             int solution = resolveStatement(leftOperand, rightOperand, operator);
@@ -33,7 +33,7 @@ public class Calc extends GameBase {
 
             this.successCount = handleSuggestion(userSuggestion, solution, this.successCount);
         }
-        if(this.successCount == MAX_SUCCESS_COUNT) {
+        if (this.successCount == MAX_SUCCESSES) {
             System.out.println("Congratulations, " + name + "!");
         }
     }
@@ -44,15 +44,15 @@ public class Calc extends GameBase {
             System.out.println("Correct!");
             return ++count;
         }
-        System.out.println("'" + suggestion + "' " + "is wrong answer ;(. " +
-                "Correct answer was " + number);
+        System.out.println("'" + suggestion + "' " + "is wrong answer ;(. "
+                + "Correct answer was " + number);
         System.out.println("Let's try again, " + name + "!");
         count = -1;
         return count;
     }
 
     /**
-     * Local method to get random math operator in String format
+     * Local method to get random math operator in String format.
      * @return Math operator in String format
      */
     private String getRandomOperation() {
@@ -60,7 +60,7 @@ public class Calc extends GameBase {
     }
 
     /**
-     * Local method to resolve math expression
+     * Local method to resolve math expression.
      * @param leftOperand expression Left operand
      * @param rightOperand  expression Right  operand
      * @param operator Math operator in String format
