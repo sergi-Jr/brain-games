@@ -1,9 +1,10 @@
 package hexlet.code.games;
 
-import hexlet.code.FileParser;
 import hexlet.code.abstracts.GameBase;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.function.Predicate;
@@ -12,6 +13,9 @@ import java.util.function.Predicate;
  * Prime game class.
  */
 public class Prime extends GameBase {
+    private final List<String> PRIMES = Arrays.asList("2", "3", "5", "7", "11", "13", "17", "19",
+            "23", "29", "31", "37", "41", "43", "47", "53", "59", "61", "67", "71", "73",
+            "79", "83", "89", "97", "101");
     /**
      * Parameterized extended cctor.
      * @param scanner
@@ -26,20 +30,13 @@ public class Prime extends GameBase {
     @Override
     public void start(String name) {
         this.name = name;
-        List<String> primeNumbers = null;
-        try {
-            primeNumbers = FileParser.getPrimeNumbers(MAX_RANDOM);
-        } catch (IOException e) {
-            System.out.println("Couldn't get access to the file.Check path correctness.");
-            return;
-        }
 
         System.out.println("Answer 'yes' if the number is prime, otherwise answer 'no'.");
 
         while (this.successCount < MAX_SUCCESSES && this.successCount >= 0) {
             int currentRnd = random.nextInt(MIN_RANDOM, MAX_RANDOM + 1);
 
-            int solution = resolveStatement(currentRnd, primeNumbers);
+            int solution = resolveStatement(currentRnd, PRIMES);
 
             System.out.println("Question: " + currentRnd);
             System.out.print("Your answer: ");
