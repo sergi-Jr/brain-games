@@ -4,7 +4,7 @@ import hexlet.code.abstracts.GameBase;
 
 import java.util.Scanner;
 
-public class Calc extends GameBase {
+public final class Calc extends GameBase {
     private final String[] operators = new String[] {"-", "+", "*"}; //Available math operators array
 
     /**
@@ -16,24 +16,24 @@ public class Calc extends GameBase {
     }
     @Override
     public void start(String name) {
-        this.name = name;
+        setName(name);
 
         System.out.println("What is the result of the expression?");
 
-        while (this.successCount < MAX_SUCCESSES && this.successCount >= 0) {
-            int leftOperand = random.nextInt(MIN_RANDOM, MAX_RANDOM + 1);
-            int rightOperand = random.nextInt(MIN_RANDOM, MAX_RANDOM + 1);
+        while (getSuccessCount() < getMaxSuccesses() && this.getSuccessCount() >= 0) {
+            int leftOperand = getRandom().nextInt(getMinRandom(), getMaxRandom() + 1);
+            int rightOperand = getRandom().nextInt(getMinRandom(), getMaxRandom() + 1);
             String operator = getRandomOperation();
             String statement = leftOperand + " " + operator + " " + rightOperand;
             int solution = resolveStatement(leftOperand, rightOperand, operator);
 
             System.out.println("Question: " + statement);
             System.out.print("Your answer: ");
-            String userSuggestion = scanner.nextLine();
+            String userSuggestion = getScanner().nextLine();
 
-            this.successCount = handleSuggestion(userSuggestion, solution, this.successCount);
+            setSuccessCount(handleSuggestion(userSuggestion, solution, getSuccessCount()));
         }
-        if (this.successCount == MAX_SUCCESSES) {
+        if (getSuccessCount() == getMaxSuccesses()) {
             System.out.println("Congratulations, " + name + "!");
         }
     }
@@ -46,7 +46,7 @@ public class Calc extends GameBase {
         }
         System.out.println("'" + suggestion + "' " + "is wrong answer ;(. "
                 + "Correct answer was " + number);
-        System.out.println("Let's try again, " + name + "!");
+        System.out.println("Let's try again, " + getName() + "!");
         count = -1;
         return count;
     }
@@ -56,7 +56,7 @@ public class Calc extends GameBase {
      * @return Math operator in String format
      */
     private String getRandomOperation() {
-        return operators[random.nextInt(0, 3)];
+        return operators[getRandom().nextInt(0, operators.length)];
     }
 
     /**

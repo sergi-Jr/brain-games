@@ -7,7 +7,7 @@ import java.util.Scanner;
  * Class provides "Greater common divisor" (GCD) game logic.
  * Consists in providing the user with the opportunity to answer the question about the finding greater common divisor
  */
-public class GCD extends GameBase {
+public final class GCD extends GameBase {
     /**
      * Parameterized extended cctor.
      * @param scanner Standard console input object ref
@@ -18,23 +18,23 @@ public class GCD extends GameBase {
 
     @Override
     public void start(String name) {
-        this.name = name;
+        setName(name);
 
         System.out.println("Find the greatest common divisor of given numbers.");
 
-        while (this.successCount < MAX_SUCCESSES && this.successCount >= 0) {
-            var leftOperand = random.nextInt(MIN_RANDOM, MAX_RANDOM + 1);
-            var rightOperand = random.nextInt(MIN_RANDOM, MAX_RANDOM + 1);
-            var statement = leftOperand + " " + rightOperand;
-            var solution = resolveStatement(leftOperand, rightOperand);
+        while (getSuccessCount() < getMaxSuccesses() && getSuccessCount() >= 0) {
+            int leftOperand = getRandom().nextInt(getMinRandom(), getMaxRandom() + 1);
+            int rightOperand = getRandom().nextInt(getMinRandom(), getMaxRandom() + 1);
+            String statement = leftOperand + " " + rightOperand;
+            int solution = resolveStatement(leftOperand, rightOperand);
 
             System.out.println("Question: " + statement);
             System.out.print("Your answer: ");
-            var userSuggestion = scanner.nextLine();
+            String userSuggestion = getScanner().nextLine();
 
-            this.successCount = handleSuggestion(userSuggestion, solution, this.successCount);
+            setSuccessCount(handleSuggestion(userSuggestion, solution, getSuccessCount()));
         }
-        if (this.successCount == MAX_SUCCESSES) {
+        if (getSuccessCount() == getMaxSuccesses()) {
             System.out.println("Congratulations, " + name + "!");
         }
     }
@@ -47,7 +47,7 @@ public class GCD extends GameBase {
         }
         System.out.println("'" + suggestion + "' " + "is wrong answer ;(. "
                 + "Correct answer was " + number);
-        System.out.println("Let's try again, " + name + "!");
+        System.out.println("Let's try again, " + getName() + "!");
         count = -1;
         return count;
     }

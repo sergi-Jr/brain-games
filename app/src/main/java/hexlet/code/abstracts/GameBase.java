@@ -7,13 +7,13 @@ import java.util.Scanner;
  * Game abstract class.
  */
 public abstract class GameBase {
-    protected Scanner scanner;
-    protected String name;
-    protected int successCount;
-    protected final int MAX_RANDOM = 100; //upper random border
-    protected final int MIN_RANDOM = 1; //lower random border
-    protected final int MAX_SUCCESSES = 3; //max success attempts count
-    protected Random random;
+    private final Scanner scanner;
+    private String name;
+    private int successCount;
+    private final int maxRandom = 100; //upper random border
+    private final int minRandom = 1; //lower random border
+    private final int maxSuccesses = 3; //max success attempts count
+    private final Random random;
 
     /**
      * Parameterized parental cctor.
@@ -46,5 +46,35 @@ public abstract class GameBase {
      */
     public final Scanner getScanner() {
         return scanner;
+    }
+    public final String getName() {
+        return name;
+    }
+
+    public int getSuccessCount() {
+        return successCount;
+    }
+
+    public int getMaxRandom() {
+        return maxRandom;
+    }
+
+    public int getMinRandom() {
+        return minRandom;
+    }
+
+    public int getMaxSuccesses() {
+        return maxSuccesses;
+    }
+
+    public Random getRandom() {
+        return random;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setSuccessCount(int successCount) {
+        this.successCount = successCount;
     }
 }

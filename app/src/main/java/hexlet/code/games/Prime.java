@@ -2,8 +2,6 @@ package hexlet.code.games;
 
 import hexlet.code.abstracts.GameBase;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -12,8 +10,8 @@ import java.util.function.Predicate;
 /**
  * Prime game class.
  */
-public class Prime extends GameBase {
-    private final List<String> PRIMES = Arrays.asList("2", "3", "5", "7", "11", "13", "17", "19",
+public final class Prime extends GameBase {
+    private final List<String> primes = Arrays.asList("2", "3", "5", "7", "11", "13", "17", "19",
             "23", "29", "31", "37", "41", "43", "47", "53", "59", "61", "67", "71", "73",
             "79", "83", "89", "97", "101");
     /**
@@ -29,22 +27,22 @@ public class Prime extends GameBase {
      */
     @Override
     public void start(String name) {
-        this.name = name;
+        setName(name);
 
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
 
-        while (this.successCount < MAX_SUCCESSES && this.successCount >= 0) {
-            int currentRnd = random.nextInt(MIN_RANDOM, MAX_RANDOM + 1);
+        while (getSuccessCount() < getMaxSuccesses() && getSuccessCount() >= 0) {
+            int currentRnd = getRandom().nextInt(getMinRandom(), getMaxRandom() + 1);
 
-            int solution = resolveStatement(currentRnd, PRIMES);
+            int solution = resolveStatement(currentRnd, primes);
 
             System.out.println("Question: " + currentRnd);
             System.out.print("Your answer: ");
-            String userSuggestion = scanner.nextLine();
+            String userSuggestion = getScanner().nextLine();
 
-            this.successCount = handleSuggestion(userSuggestion, solution, this.successCount);
+            setSuccessCount(handleSuggestion(userSuggestion, solution, getSuccessCount()));
         }
-        if (this.successCount == MAX_SUCCESSES) {
+        if (getSuccessCount() == getMaxSuccesses()) {
             System.out.println("Congratulations, " + name + "!");
         }
     }
@@ -62,7 +60,7 @@ public class Prime extends GameBase {
         var correctAnswer = suggestion.equals("yes") ? ("'no'") : ("'yes'");
         System.out.println("'" + suggestion + "' " + "is wrong answer ;(. "
                 + "Correct answer was " + correctAnswer);
-        System.out.println("Let's try again, " + name + "!");
+        System.out.println("Let's try again, " + getName() + "!");
         count = -1;
         return count;
     }
@@ -70,11 +68,11 @@ public class Prime extends GameBase {
     /**
      * Method determines that number is prime.
      * @param questNum Question randomly generated number
-     * @param primes List contains prime numbers
+     * @param primesList List contains prime numbers
      * @return 0 if number is not prime, 1 otherwise
      */
-    private int resolveStatement(int questNum, List<String> primes) {
-        List<String> predicateSolutions = primes.stream()
+    private int resolveStatement(int questNum, List<String> primesList) {
+        List<String> predicateSolutions = primesList.stream()
                 .filter(isPrimeNumber(questNum))
                 .toList();
         return predicateSolutions.isEmpty() ? 0 : 1;

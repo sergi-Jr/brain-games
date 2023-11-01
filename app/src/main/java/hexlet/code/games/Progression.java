@@ -4,8 +4,8 @@ import hexlet.code.abstracts.GameBase;
 
 import java.util.Scanner;
 
-public class Progression extends GameBase {
-    private final int PROGRESSION_LENGTH = 10; //max numbers count in progression
+public final class Progression extends GameBase {
+    private final int progressionLength = 10; //max numbers count in progression
     /**
      * Parameterized parental cctor.
      *
@@ -17,25 +17,25 @@ public class Progression extends GameBase {
 
     @Override
     public void start(String name) {
-        this.name = name;
+        setName(name);
 
 
         System.out.println("What number is missing in the progression?");
 
-        while (this.successCount < MAX_SUCCESSES && this.successCount >= 0) {
-            int progressionIncrement = random.nextInt(MIN_RANDOM, MAX_RANDOM + 1);
-            int progressionStartValue = random.nextInt(MIN_RANDOM, MAX_RANDOM + 1);
-            int missingValuePosition = random.nextInt(0, PROGRESSION_LENGTH);
+        while (getSuccessCount() < getMaxSuccesses() && getSuccessCount() >= 0) {
+            int progressionIncrement = getRandom().nextInt(getMinRandom(), getMaxRandom() + 1);
+            int progressionStartValue = getRandom().nextInt(getMinRandom(), getMaxRandom() + 1);
+            int missingValuePosition = getRandom().nextInt(0, progressionLength);
             int solution = progressionStartValue + missingValuePosition * progressionIncrement;
 
             System.out.print("Question: ");
             showProgression(progressionStartValue, progressionIncrement, missingValuePosition);
             System.out.print("Your answer: ");
-            String userSuggestion = scanner.nextLine();
+            String userSuggestion = getScanner().nextLine();
 
-            this.successCount = handleSuggestion(userSuggestion, solution, this.successCount);
+            this.setSuccessCount(handleSuggestion(userSuggestion, solution, this.getSuccessCount()));
         }
-        if (this.successCount == MAX_SUCCESSES) {
+        if (this.getSuccessCount() == getMaxSuccesses()) {
             System.out.println("Congratulations, " + name + "!");
         }
     }
@@ -48,7 +48,7 @@ public class Progression extends GameBase {
         }
         System.out.println("'" + suggestion + "' " + "is wrong answer ;(. "
                 + "Correct answer was " + number);
-        System.out.println("Let's try again, " + name + "!");
+        System.out.println("Let's try again, " + getName() + "!");
         count = -1;
         return count;
     }
@@ -62,7 +62,7 @@ public class Progression extends GameBase {
     private void showProgression(int start, int increment, int position) {
         StringBuilder output = new StringBuilder();
 
-        for (int i = 0; i < PROGRESSION_LENGTH; i++) {
+        for (int i = 0; i < progressionLength; i++) {
             var currentSymbolToOutput = i == position ? ".." : start;
             output.append(currentSymbolToOutput).append(" ");
             start += increment;

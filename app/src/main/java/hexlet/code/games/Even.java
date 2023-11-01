@@ -8,7 +8,7 @@ import java.util.Scanner;
  * Class provides "Even" game logic, consisting in providing the user with
  * the opportunity to answer the question about the parity of the number.
  */
-public class Even extends GameBase {
+public final class Even extends GameBase {
     /**
      * Parameterized extended class cctor.
      * @param scanner Standard console input object ref
@@ -19,21 +19,21 @@ public class Even extends GameBase {
 
     @Override
     public void start(String name) {
-        this.name = name;
+        setName(name);
 
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
-        while (this.successCount < MAX_SUCCESSES && this.successCount >= 0) {
-            int currentRnd = random.nextInt(MIN_RANDOM, MAX_RANDOM + 1);
+        while (getSuccessCount() < getMaxSuccesses() && getSuccessCount() >= 0) {
+            int currentRnd = getRandom().nextInt(getMinRandom(), getMaxRandom() + 1);
             int solution = currentRnd % 2;
 
             System.out.println("Question: " + currentRnd);
             System.out.print("Your answer: ");
-            String userSuggestion = scanner.nextLine();
+            String userSuggestion = getScanner().nextLine();
 
-            this.successCount = handleSuggestion(userSuggestion, solution, this.successCount);
+            setSuccessCount(handleSuggestion(userSuggestion, solution, getSuccessCount()));
         }
-        if (this.successCount == MAX_SUCCESSES) {
+        if (getSuccessCount() == getMaxSuccesses()) {
             System.out.println("Congratulations, " + name + "!");
         }
     }
@@ -47,7 +47,7 @@ public class Even extends GameBase {
         var correctAnswer = suggestion.equals("yes") ? ("'no'") : ("'yes'");
         System.out.println("'" + suggestion + "' " + "is wrong answer ;(. "
                 + "Correct answer was " + correctAnswer);
-        System.out.println("Let's try again, " + name + "!");
+        System.out.println("Let's try again, " + getName() + "!");
         count = -1;
         return count;
     }
