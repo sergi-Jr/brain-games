@@ -40,12 +40,15 @@ public class App {
             case ("4"): //GCD game choice
                 GCD gcdGame = new GCD(SCANNER);
                 Engine.execute(gcdGame);
+                break;
             case ("5"): //Progression game choice
                 Progression progressionGame = new Progression(SCANNER);
                 Engine.execute(progressionGame);
+                break;
             case ("6"): //Prime game choice
                 Prime primeGame = new Prime(SCANNER);
                 Engine.execute(primeGame);
+                break;
             default: //Exit choice or unexpected input string
                 break;
         }
