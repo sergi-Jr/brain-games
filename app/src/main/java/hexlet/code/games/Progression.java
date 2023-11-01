@@ -28,6 +28,7 @@ public class Progression extends GameBase {
             int missingValuePosition = random.nextInt(0, PROGRESSION_LENGTH);
             int solution = progressionStartValue + missingValuePosition * progressionIncrement;
 
+            System.out.print("Question: ");
             showProgression(progressionStartValue, progressionIncrement, missingValuePosition);
             System.out.print("Your answer: ");
             String userSuggestion = scanner.nextLine();
