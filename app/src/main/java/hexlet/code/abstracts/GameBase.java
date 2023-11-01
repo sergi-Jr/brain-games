@@ -17,10 +17,10 @@ public abstract class GameBase {
 
     /**
      * Parameterized parental cctor.
-     * @param scanner Standard console input ref object
+     * @param scannerRef Standard console input ref object
      */
-    protected GameBase(Scanner scanner) {
-        this.scanner = scanner;
+    protected GameBase(Scanner scannerRef) {
+        this.scanner = scannerRef;
         this.successCount = 0;
         this.random = new Random();
     }
@@ -51,30 +51,30 @@ public abstract class GameBase {
         return name;
     }
 
-    public int getSuccessCount() {
+    public final int getSuccessCount() {
         return successCount;
     }
 
-    public int getMaxRandom() {
+    public final int getMaxRandom() {
         return maxRandom;
     }
 
-    public int getMinRandom() {
+    public final int getMinRandom() {
         return minRandom;
     }
 
-    public int getMaxSuccesses() {
+    public final int getMaxSuccesses() {
         return maxSuccesses;
     }
 
-    public Random getRandom() {
+    public final Random getRandom() {
         return random;
     }
 
-    public void setName(String name) {
+    public final void setName(String name) {
         this.name = name;
     }
-    public void setSuccessCount(int successCount) {
-        this.successCount = successCount;
+    public final void setSuccessCount(int successes) {
+        this.successCount = successes;
     }
 }
