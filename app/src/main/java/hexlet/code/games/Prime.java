@@ -31,7 +31,7 @@ public class Prime extends GameBase {
     public void start(String name) {
         this.name = name;
 
-        System.out.println("Answer 'yes' if the number is prime, otherwise answer 'no'.");
+        System.out.println("Answer 'yes' if the number is prime. Otherwise answer 'no'.");
 
         while (this.successCount < MAX_SUCCESSES && this.successCount >= 0) {
             int currentRnd = random.nextInt(MIN_RANDOM, MAX_RANDOM + 1);
