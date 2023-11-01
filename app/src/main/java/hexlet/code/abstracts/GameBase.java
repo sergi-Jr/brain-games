@@ -71,8 +71,8 @@ public abstract class GameBase {
         return random;
     }
 
-    public final void setName(String name) {
-        this.name = name;
+    public final void setName(String username) {
+        this.name = username;
     }
     public final void setSuccessCount(int successes) {
         this.successCount = successes;
