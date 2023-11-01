@@ -26,7 +26,7 @@ public abstract class GameBase {
     }
 
     /**
-     * start Game contract method
+     * Start Game contract method
      * @param name Name entered by user
      */
     public abstract void start(String name);
@@ -41,7 +41,7 @@ public abstract class GameBase {
     public abstract int handleSuggestion(String suggestion, int number, int count);
 
     /**
-     * Scanner object ref non-overridable getter
+     * Non-overridable Scanner object ref  getter
      * @return Scanner object
      */
     public final Scanner getScanner() {
