@@ -5,4 +5,5 @@
 [![Static Badge](https://img.shields.io/badge/calcGame-green.svg)](https://asciinema.org/a/6yz451C1ntU2H92syLqBo8nQI)
 [![Static Badge](https://img.shields.io/badge/gcd-blue.svg)](https://asciinema.org/a/zR1MVOsPBDj6ZhEZJ6KKfVabi)
 [![Static Badge](https://img.shields.io/badge/progression-white.svg)](https://asciinema.org/a/jprN3bFXFg8hIpHfKIFKM9z1c)
+[![Static Badge](https://img.shields.io/badge/prime-yellow.svg)](https://asciinema.org/a/kKGXqOLKM0ASRPjGLVbSXv8I4)
 
