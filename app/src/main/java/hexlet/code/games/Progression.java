@@ -20,7 +20,7 @@ public class Progression extends GameBase {
         this.name = name;
 
 
-        System.out.println("What number is missing int the progression?");
+        System.out.println("What number is missing in the progression?");
 
         while (this.successCount < MAX_SUCCESSES && this.successCount >= 0) {
             int progressionIncrement = random.nextInt(MIN_RANDOM, MAX_RANDOM + 1);
