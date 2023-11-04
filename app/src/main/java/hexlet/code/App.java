@@ -30,24 +30,19 @@ public class App {
                 Greeter.greet(SCANNER);
                 break;
             case ("2"): //Even game choice
-                Even evenGame = new Even(SCANNER);
-                Engine.execute(evenGame);
+                Even.start(SCANNER);
                 break;
             case ("3"): //Calc game choice
-                Calc calcGame = new Calc(SCANNER);
-                Engine.execute(calcGame);
+                Calc.start(SCANNER);
                 break;
             case ("4"): //GCD game choice
-                GCD gcdGame = new GCD(SCANNER);
-                Engine.execute(gcdGame);
+                GCD.start(SCANNER);
                 break;
             case ("5"): //Progression game choice
-                Progression progressionGame = new Progression(SCANNER);
-                Engine.execute(progressionGame);
+                Progression.start(SCANNER);
                 break;
             case ("6"): //Prime game choice
-                Prime primeGame = new Prime(SCANNER);
-                Engine.execute(primeGame);
+                Prime.start(SCANNER);
                 break;
             default: //Exit choice or unexpected input string
                 break;
