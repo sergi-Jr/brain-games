@@ -8,15 +8,14 @@ public final class Greeter {
     private static String name;
     /**
      * Local username request method.
-     * @param scanner Standard system input ref object
+     * @param inputScanner Standard user input reader
      */
-    public static void greet(Scanner scanner) {
+    public static void greet(Scanner inputScanner) {
         System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
-        name = scanner.nextLine();
+        name = inputScanner.nextLine();
         System.out.println("Hello, " + name + "!");
     }
-
     /**
      * Username field getter.
      * @return Name field
