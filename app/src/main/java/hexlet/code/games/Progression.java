@@ -1,9 +1,9 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public final class Progression {
     private static final int PROGRESSION_LENGTH = 10; //max numbers count in progression
@@ -24,19 +24,19 @@ public final class Progression {
         }
         return String.valueOf(output);
     }
-    public static void start(Scanner scanner) {
+    public static void start() {
         String rules = "What number is missing in the progression?";
-        String[] questions = new String[Engine.getMaxSuccessesCount()];
+        String[] questions = new String[Engine.MAX_SUCCESSES_COUNT];
         String[] answers = new String[questions.length];
         Random rnd = new Random();
         for (int i = 0; i < questions.length; i++) {
-            int progressionIncrement = Engine.getRandomNumber();
-            int progressionStartValue = Engine.getRandomNumber();
+            int progressionIncrement = Utils.getRandomInt(0, 100);
+            int progressionStartValue = Utils.getRandomInt(0, 100);
             int missingValuePosition = rnd.nextInt(0, PROGRESSION_LENGTH);
             questions[i] = getQuestionStatement(progressionStartValue, progressionIncrement, missingValuePosition);
             int solution = progressionStartValue + missingValuePosition * progressionIncrement;
             answers[i] = String.valueOf(solution);
         }
-        Engine.execute(scanner, rules, questions, answers);
+        Engine.execute(rules, questions, answers);
     }
 }

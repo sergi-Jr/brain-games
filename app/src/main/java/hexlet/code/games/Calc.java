@@ -1,20 +1,13 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public final class Calc {
     private static final String[] OPERATORS = new String[] {"-", "+", "*"}; //Available math operators array
-    /**
-     * Local method to get random math operator in String format.
-     * @return Math operator in String format
-     */
-    private static String getRandomOperation() {
-        Random rnd = new Random();
-        return OPERATORS[rnd.nextInt(0, OPERATORS.length)];
-    }
+
 
     /**
      * Local method to resolve math expression.
@@ -24,36 +17,36 @@ public final class Calc {
      * @return Statement solution
      */
     private static int resolveStatement(int leftOperand, int rightOperand, String operator) {
-        int result = 0;
-        switch (operator) {
-            case ("+"):
-                result = leftOperand + rightOperand;
-                break;
-            case ("*"):
-                result = leftOperand * rightOperand;
-                break;
-            case ("-"):
-                result = leftOperand - rightOperand;
-                break;
-            default:
-                break;
-        }
-        return result;
+        return switch (operator) {
+            case ("+") -> leftOperand + rightOperand;
+            case ("*") -> leftOperand * rightOperand;
+            case ("-") -> leftOperand - rightOperand;
+            default -> throw new Error("Error occurs in Calc.resolveStatement(int, int, String) method."
+                    + " @param int leftOperand = " + leftOperand
+                    + " @param int rightOperand = " + rightOperand
+                    + " @param String operator = " + operator
+                    + " Unknown to resolve operator " + operator);
+        };
     }
 
-    public static void start(Scanner scanner) {
+    public static void start() {
         String ruleMessage = "What is the result of the expression?";
-        String[] questions = new String[Engine.getMaxSuccessesCount()];
+        String[] questions = new String[Engine.MAX_SUCCESSES_COUNT];
         String[] answers = new String[questions.length];
+        Random rnd = new Random();
 
         for (int i = 0; i < questions.length; i++) {
-            int leftOperand = Engine.getRandomNumber();
-            int rightOperand = Engine.getRandomNumber();
-            String operator = getRandomOperation();
+            int leftOperand = Utils.getRandomInt(0, 100);
+            int rightOperand = Utils.getRandomInt(0, 100);
+            String operator = OPERATORS[rnd.nextInt(0, OPERATORS.length)];
             String statement = leftOperand + " " + operator + " " + rightOperand;
             questions[i] = statement;
-            answers[i] = String.valueOf(resolveStatement(leftOperand, rightOperand, operator));
+            try {
+                answers[i] = String.valueOf(resolveStatement(leftOperand, rightOperand, operator));
+            } catch (Error err) {
+                System.out.println(err.getMessage());
+            }
         }
-        Engine.execute(scanner, ruleMessage, questions, answers);
+        Engine.execute(ruleMessage, questions, answers);
     }
 }

@@ -1,8 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-
-import java.util.Scanner;
+import hexlet.code.Utils;
 
 /**
  * Class provides "Greater common divisor" (GCD) game logic.
@@ -26,19 +25,19 @@ public final class GCD {
         }
         return greaterOperand;
     }
-    public static void start(Scanner scanner) {
+    public static void start() {
         String rules = "Find the greatest common divisor of given numbers.";
-        String[] questions = new String[Engine.getMaxSuccessesCount()];
+        String[] questions = new String[Engine.MAX_SUCCESSES_COUNT];
         String[] answers = new String[questions.length];
         for (int i = 0; i < questions.length; i++) {
-            int leftOperand = Engine.getRandomNumber();
-            int rightOperand = Engine.getRandomNumber();
+            int leftOperand = Utils.getRandomInt(0, 100);
+            int rightOperand = Utils.getRandomInt(0, 100);
             String statement = leftOperand + " " + rightOperand;
             questions[i] = statement;
             int solution = resolveStatement(leftOperand, rightOperand);
             answers[i] = String.valueOf(solution);
         }
-        Engine.execute(scanner, rules, questions, answers);
+        Engine.execute(rules, questions, answers);
     }
 
 

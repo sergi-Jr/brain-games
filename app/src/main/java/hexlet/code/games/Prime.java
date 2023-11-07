@@ -1,30 +1,22 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
-import java.util.function.Predicate;
+import hexlet.code.Utils;
 
 /**
  * Prime game class.
  */
 public final class Prime {
-    private static final List<String> PRIMES = Arrays.asList("2", "3", "5", "7", "11", "13", "17", "19",
-            "23", "29", "31", "37", "41", "43", "47", "53", "59", "61", "67", "71", "73",
-            "79", "83", "89", "97", "101");
-
-    public static void start(Scanner scanner) {
+    public static void start() {
         String rules = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-        String[] questions = new String[Engine.getMaxSuccessesCount()];
+        String[] questions = new String[Engine.MAX_SUCCESSES_COUNT];
         String[] answers = new String[questions.length];
         for (int i = 0; i < questions.length; i++) {
-            int currentRnd = Engine.getRandomNumber();
+            int currentRnd = Utils.getRandomInt(0, 1000);
             questions[i] = String.valueOf(currentRnd);
-            answers[i] = String.valueOf(resolveStatement(currentRnd));
+            answers[i] = resolveStatement(currentRnd);
         }
-        Engine.execute(scanner, rules, questions, answers);
+        Engine.execute(rules, questions, answers);
     }
 
     /**
@@ -33,18 +25,14 @@ public final class Prime {
      * @return 0 if number is not prime, 1 otherwise
      */
     private static String resolveStatement(int questNum) {
-        List<String> predicateSolutions = PRIMES.stream()
-                .filter(isPrimeNumber(questNum))
-                .toList();
-        return predicateSolutions.isEmpty() ? "no" : "yes";
-    }
-
-    /**
-     * Predicate that determines whether the given number matches an element of the list.
-     * @param number Number to compare
-     * @return Filtered element(S)
-     */
-    private static Predicate<String> isPrimeNumber(int number) {
-        return num -> num.equals(String.valueOf(number));
+        if (questNum < 2) {
+            return "no";
+        }
+        for (int i = 2; i <= questNum / 2; i++) {
+            if (questNum % i == 0) {
+                return "no";
+            }
+        }
+        return "yes";
     }
 }
