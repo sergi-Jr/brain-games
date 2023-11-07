@@ -9,13 +9,6 @@ import java.util.Scanner;
  * the opportunity to answer the question about the parity of the number.
  */
 public final class Even {
-    private static String[] getAnswers(String[] statements) {
-        String[] result = new String[statements.length];
-        for (int i = 0; i < statements.length; i++) {
-            result[i] = Integer.parseInt(statements[i]) % 2 == 0 ? "yes" : "no";
-        }
-        return result;
-    }
     public static void start(Scanner scanner) {
         String ruleMessage = "Answer 'yes' if the number is even, otherwise answer 'no'.";
         String[] questions = new String[Engine.getMaxSuccessesCount()];
