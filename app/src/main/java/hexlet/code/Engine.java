@@ -7,6 +7,8 @@ import java.util.Scanner;
  * Utility class provides games execution.
  */
 public final class Engine {
+    public static final int MAX_RANDOM_INT = 100;
+    public static final int MIN_RANDOM_INT = 0;
     public static final int MAX_SUCCESSES_COUNT = 3;
     private static final Random RANDOM = new Random();
     public static void execute(String rules, String[] questions, String[] answers) {

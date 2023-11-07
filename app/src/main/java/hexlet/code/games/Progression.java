@@ -30,8 +30,8 @@ public final class Progression {
         String[] answers = new String[questions.length];
         Random rnd = new Random();
         for (int i = 0; i < questions.length; i++) {
-            int progressionIncrement = Utils.getRandomInt(0, 100);
-            int progressionStartValue = Utils.getRandomInt(0, 100);
+            int progressionIncrement = Utils.getRandomInt(Engine.MIN_RANDOM_INT, Engine.MAX_RANDOM_INT);
+            int progressionStartValue = Utils.getRandomInt(Engine.MIN_RANDOM_INT, Engine.MAX_RANDOM_INT);
             int missingValuePosition = rnd.nextInt(0, PROGRESSION_LENGTH);
             questions[i] = getQuestionStatement(progressionStartValue, progressionIncrement, missingValuePosition);
             int solution = progressionStartValue + missingValuePosition * progressionIncrement;

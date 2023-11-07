@@ -30,8 +30,8 @@ public final class GCD {
         String[] questions = new String[Engine.MAX_SUCCESSES_COUNT];
         String[] answers = new String[questions.length];
         for (int i = 0; i < questions.length; i++) {
-            int leftOperand = Utils.getRandomInt(0, 100);
-            int rightOperand = Utils.getRandomInt(0, 100);
+            int leftOperand = Utils.getRandomInt(Engine.MIN_RANDOM_INT, Engine.MAX_RANDOM_INT);
+            int rightOperand = Utils.getRandomInt(Engine.MIN_RANDOM_INT, Engine.MAX_RANDOM_INT);
             String statement = leftOperand + " " + rightOperand;
             questions[i] = statement;
             int solution = resolveStatement(leftOperand, rightOperand);

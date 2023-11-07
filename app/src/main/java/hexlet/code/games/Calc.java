@@ -36,8 +36,8 @@ public final class Calc {
         Random rnd = new Random();
 
         for (int i = 0; i < questions.length; i++) {
-            int leftOperand = Utils.getRandomInt(0, 100);
-            int rightOperand = Utils.getRandomInt(0, 100);
+            int leftOperand = Utils.getRandomInt(Engine.MIN_RANDOM_INT, Engine.MAX_RANDOM_INT);
+            int rightOperand = Utils.getRandomInt(Engine.MIN_RANDOM_INT, Engine.MAX_RANDOM_INT);
             String operator = OPERATORS[rnd.nextInt(0, OPERATORS.length)];
             String statement = leftOperand + " " + operator + " " + rightOperand;
             questions[i] = statement;

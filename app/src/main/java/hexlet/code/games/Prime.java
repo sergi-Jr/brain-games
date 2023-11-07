@@ -12,7 +12,7 @@ public final class Prime {
         String[] questions = new String[Engine.MAX_SUCCESSES_COUNT];
         String[] answers = new String[questions.length];
         for (int i = 0; i < questions.length; i++) {
-            int currentRnd = Utils.getRandomInt(0, 1000);
+            int currentRnd = Utils.getRandomInt(Engine.MIN_RANDOM_INT, Engine.MAX_RANDOM_INT);
             questions[i] = String.valueOf(currentRnd);
             answers[i] = resolveStatement(currentRnd);
         }

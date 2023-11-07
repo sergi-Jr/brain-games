@@ -17,7 +17,7 @@ public final class Even {
         String[] answers = new String[questions.length];
 
         for (int i = 0; i < questions.length; i++) {
-            int questionNumber = Utils.getRandomInt(0, 100);
+            int questionNumber = Utils.getRandomInt(Engine.MIN_RANDOM_INT, Engine.MAX_RANDOM_INT);
             questions[i] = String.valueOf(questionNumber);
             answers[i] = getAnswer(questionNumber);
         }
