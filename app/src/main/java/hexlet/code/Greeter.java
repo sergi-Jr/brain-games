@@ -8,9 +8,9 @@ public final class Greeter {
     private static String name;
     /**
      * Local username request method.
-     * @param inputScanner Standard user input reader
      */
-    public static void greet(Scanner inputScanner) {
+    public static void greet() {
+        Scanner inputScanner = new Scanner(System.in);
         System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
         name = inputScanner.nextLine();
