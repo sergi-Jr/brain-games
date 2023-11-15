@@ -3,6 +3,8 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public final class Calc {
@@ -31,22 +33,20 @@ public final class Calc {
 
     public static void start() {
         String ruleMessage = "What is the result of the expression?";
-        String[] questions = new String[Engine.MAX_SUCCESSES_COUNT];
-        String[] answers = new String[questions.length];
-        Random rnd = new Random();
+        Map<String, String> gameData = new HashMap<>(Engine.MAX_SUCCESSES_COUNT);
 
-        for (int i = 0; i < questions.length; i++) {
+        for (int i = 0; i < Engine.MAX_SUCCESSES_COUNT; i++) {
             int leftOperand = Utils.getRandomInt(Engine.MIN_RANDOM_INT, Engine.MAX_RANDOM_INT);
             int rightOperand = Utils.getRandomInt(Engine.MIN_RANDOM_INT, Engine.MAX_RANDOM_INT);
-            String operator = OPERATORS[rnd.nextInt(0, OPERATORS.length)];
+            String operator = OPERATORS[Utils.getRandomInt(0, OPERATORS.length)];
             String statement = leftOperand + " " + operator + " " + rightOperand;
-            questions[i] = statement;
             try {
-                answers[i] = String.valueOf(resolveStatement(leftOperand, rightOperand, operator));
+                String answer = String.valueOf(resolveStatement(leftOperand, rightOperand, operator));
+                gameData.put(statement, answer);
             } catch (Error err) {
                 System.out.println(err.getMessage());
             }
         }
-        Engine.execute(ruleMessage, questions, answers);
+        Engine.execute(ruleMessage, gameData);
     }
 }

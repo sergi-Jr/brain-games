@@ -3,6 +3,9 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Class provides "Greater common divisor" (GCD) game logic.
  * Consists in providing the user with the opportunity to answer the question about the finding greater common divisor
@@ -27,17 +30,17 @@ public final class GCD {
     }
     public static void start() {
         String rules = "Find the greatest common divisor of given numbers.";
-        String[] questions = new String[Engine.MAX_SUCCESSES_COUNT];
-        String[] answers = new String[questions.length];
-        for (int i = 0; i < questions.length; i++) {
+        Map<String, String> gameData = new HashMap<>(Engine.MAX_SUCCESSES_COUNT);
+
+        for (int i = 0; i < Engine.MAX_SUCCESSES_COUNT; i++) {
             int leftOperand = Utils.getRandomInt(Engine.MIN_RANDOM_INT, Engine.MAX_RANDOM_INT);
             int rightOperand = Utils.getRandomInt(Engine.MIN_RANDOM_INT, Engine.MAX_RANDOM_INT);
             String statement = leftOperand + " " + rightOperand;
-            questions[i] = statement;
             int solution = resolveStatement(leftOperand, rightOperand);
-            answers[i] = String.valueOf(solution);
+            String answer = String.valueOf(solution);
+            gameData.put(statement, answer);
         }
-        Engine.execute(rules, questions, answers);
+        Engine.execute(rules, gameData);
     }
 
 
