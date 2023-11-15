@@ -5,7 +5,6 @@ import hexlet.code.Utils;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 public final class Calc {
     private static final String[] OPERATORS = new String[] {"-", "+", "*"}; //Available math operators array

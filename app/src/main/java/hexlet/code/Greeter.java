@@ -14,5 +14,6 @@ public final class Greeter {
         System.out.print("May I have your name? ");
         String name = inputScanner.nextLine();
         System.out.println("Hello, " + name + "!");
+        inputScanner.close();
     }
 }

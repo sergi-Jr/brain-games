@@ -5,7 +5,6 @@ import hexlet.code.Utils;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 public final class Progression {
     private static final int PROGRESSION_LENGTH = 10; //max numbers count in progression
@@ -32,7 +31,8 @@ public final class Progression {
             int progressionIncrement = Utils.getRandomInt(Engine.MIN_RANDOM_INT, Engine.MAX_RANDOM_INT);
             int progressionStartValue = Utils.getRandomInt(Engine.MIN_RANDOM_INT, Engine.MAX_RANDOM_INT);
             int missingValuePosition = Utils.getRandomInt(0, PROGRESSION_LENGTH);
-            String[] progressArr = getQuestionStatement(progressionStartValue, progressionIncrement, PROGRESSION_LENGTH);
+            String[] progressArr =
+                    getQuestionStatement(progressionStartValue, progressionIncrement, PROGRESSION_LENGTH);
             progressArr[missingValuePosition] = "..";
             String question = String.join(" ", progressArr);
             int solution = progressionStartValue + missingValuePosition * progressionIncrement;

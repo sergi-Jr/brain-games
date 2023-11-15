@@ -16,15 +16,13 @@ public final class Engine {
         System.out.print("May I have your name? ");
         String name = inputScanner.nextLine();
         System.out.println("Hello, " + name + "!");
-        inputScanner.close();
         return name;
     }
 
     public static void execute(String rules, Map<String, String> gameData) {
-        Scanner scanner = new Scanner(System.in);
         String name = greet();
+        Scanner scanner = new Scanner(System.in);
         int currentSuccessesCount = 0;
-
         System.out.println(rules);
 
         for (Map.Entry<String, String> entry : gameData.entrySet()) {
