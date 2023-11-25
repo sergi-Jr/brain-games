@@ -3,13 +3,13 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public final class Calc {
     private static final String[] OPERATORS = new String[] {"-", "+", "*"}; //Available math operators array
-
-
     /**
      * Local method to resolve math expression.
      * @param leftOperand expression Left operand
@@ -32,7 +32,7 @@ public final class Calc {
 
     public static void start() {
         String ruleMessage = "What is the result of the expression?";
-        Map<String, String> gameData = new HashMap<>(Engine.MAX_SUCCESSES_COUNT);
+        List<Map<String, String>> gameData = new ArrayList<>(Engine.MAX_SUCCESSES_COUNT);
 
         for (int i = 0; i < Engine.MAX_SUCCESSES_COUNT; i++) {
             int leftOperand = Utils.getRandomInt(Engine.MIN_RANDOM_INT, Engine.MAX_RANDOM_INT);
@@ -41,7 +41,9 @@ public final class Calc {
             String statement = leftOperand + " " + operator + " " + rightOperand;
             try {
                 String answer = String.valueOf(resolveStatement(leftOperand, rightOperand, operator));
-                gameData.put(statement, answer);
+                Map<String, String> dataPair = new HashMap<>(1);
+                dataPair.put(statement, answer);
+                gameData.add(dataPair);
             } catch (Error err) {
                 System.out.println(err.getMessage());
             }

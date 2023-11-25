@@ -3,7 +3,9 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public final class Progression {
@@ -23,9 +25,10 @@ public final class Progression {
         }
         return result;
     }
+
     public static void start() {
         String rules = "What number is missing in the progression?";
-        Map<String, String> gameData = new HashMap<>(Engine.MAX_SUCCESSES_COUNT);
+        List<Map<String, String>> gameData = new ArrayList<>(Engine.MAX_SUCCESSES_COUNT);
 
         for (int i = 0; i < Engine.MAX_SUCCESSES_COUNT; i++) {
             int progressionIncrement = Utils.getRandomInt(Engine.MIN_RANDOM_INT, Engine.MAX_RANDOM_INT);
@@ -37,7 +40,9 @@ public final class Progression {
             String question = String.join(" ", progressArr);
             int solution = progressionStartValue + missingValuePosition * progressionIncrement;
             String answer = String.valueOf(solution);
-            gameData.put(question, answer);
+            Map<String, String> dataPair = new HashMap<>(1);
+            dataPair.put(question, answer);
+            gameData.add(dataPair);
         }
         Engine.execute(rules, gameData);
     }

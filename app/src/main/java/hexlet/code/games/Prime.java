@@ -3,21 +3,26 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
  * Prime game class.
  */
 public final class Prime {
+
     public static void start() {
         String rules = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-        Map<String, String> gameData = new HashMap<>(Engine.MAX_SUCCESSES_COUNT);
+        List<Map<String, String>> gameData = new ArrayList<>(Engine.MAX_SUCCESSES_COUNT);
         for (int i = 0; i < Engine.MAX_SUCCESSES_COUNT; i++) {
             int currentRnd = Utils.getRandomInt(Engine.MIN_RANDOM_INT, Engine.MAX_RANDOM_INT);
             String question = String.valueOf(currentRnd);
             String answer = resolveStatement(currentRnd) ? "yes" : "no";
-            gameData.put(question, answer);
+            Map<String, String> dataPair = new HashMap<>(1);
+            dataPair.put(question, answer);
+            gameData.add(dataPair);
         }
         Engine.execute(rules, gameData);
     }

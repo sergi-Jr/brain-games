@@ -3,7 +3,9 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,9 +30,10 @@ public final class GCD {
         }
         return greaterOperand;
     }
+
     public static void start() {
         String rules = "Find the greatest common divisor of given numbers.";
-        Map<String, String> gameData = new HashMap<>(Engine.MAX_SUCCESSES_COUNT);
+        List<Map<String, String>> gameData = new ArrayList<>(Engine.MAX_SUCCESSES_COUNT);
 
         for (int i = 0; i < Engine.MAX_SUCCESSES_COUNT; i++) {
             int leftOperand = Utils.getRandomInt(Engine.MIN_RANDOM_INT, Engine.MAX_RANDOM_INT);
@@ -38,10 +41,10 @@ public final class GCD {
             String statement = leftOperand + " " + rightOperand;
             int solution = resolveStatement(leftOperand, rightOperand);
             String answer = String.valueOf(solution);
-            gameData.put(statement, answer);
+            Map<String, String> dataPair = new HashMap<>(1);
+            dataPair.put(statement, answer);
+            gameData.add(dataPair);
         }
         Engine.execute(rules, gameData);
     }
-
-
 }
