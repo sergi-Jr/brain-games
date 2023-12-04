@@ -13,8 +13,13 @@ Games to improve math skills. Include:
   ##### [![Static Badge](https://img.shields.io/badge/prime-yellow.svg)](https://asciinema.org/a/kKGXqOLKM0ASRPjGLVbSXv8I4) Prime game - improve your skill of determining the primary of a number
 
 ### How to use
-Download [zip](https://github.com/sergi-Jr/java-project-61/archive/refs/heads/main.zip). Then unzip into prefered folder.   
-Open terminal *Windows + R, then type **cmd** and press Enter* (or *Control-Shift-Command+?* for Mac).  
-Type **javac -d bin %unzippedFilesFolderObsolutePath%/src/***.  
-Type **java -classpath %unzippedFilesFolderObsolutePath%/bin App**.  
+Download [zip](https://github.com/sergi-Jr/java-project-61/archive/refs/heads/main.zip). Then unzip into prefered folder.  
+Download [Java](https://www.java.com/ru/download/manual.jsp) for your OS.
+
+Run terminal on your machine and type:
+```
+javac -d bin %unzippedFilesFolderObsolutePath%/src/*
+java -classpath %unzippedFilesFolderObsolutePath%/bin App
+```
+
 Enjoy ;)
