@@ -22,10 +22,6 @@ public class App {
         scanner.close();
     }
 
-    /**
-     * Method launches required game by user choice.
-     * @param choice User entered choice
-     */
     private static void gameSwitcher(String choice) {
         switch (choice) {
             case ("1"): //greet message

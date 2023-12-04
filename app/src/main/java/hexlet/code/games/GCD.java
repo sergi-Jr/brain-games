@@ -8,18 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Class provides "Greater common divisor" (GCD) game logic.
- * Consists in providing the user with the opportunity to answer the question about the finding greater common divisor
- */
 public final class GCD {
-    /**
-     * Local method to resolve math expression.
-     * @param leftOperand expression Left operand
-     * @param rightOperand  expression Right  operand
-     * @return Statement solution
-     */
-    private static int resolveStatement(int leftOperand, int rightOperand) {
+
+    private static String getAnswer(int leftOperand, int rightOperand) {
         int greaterOperand = Math.max(leftOperand, rightOperand);
         int lessOperand = Math.min(leftOperand, rightOperand);
 
@@ -28,23 +19,23 @@ public final class GCD {
             greaterOperand = lessOperand;
             lessOperand = temp;
         }
-        return greaterOperand;
+        return String.valueOf(greaterOperand);
     }
 
     public static void start() {
-        String rules = "Find the greatest common divisor of given numbers.";
-        List<Map<String, String>> gameData = new ArrayList<>(Engine.MAX_SUCCESSES_COUNT);
+        String ruleMessage = "Find the greatest common divisor of given numbers.";
+        List<Map<String, String>> gameDataCollection = new ArrayList<>(Engine.MAX_SUCCESSES_COUNT);
 
         for (int i = 0; i < Engine.MAX_SUCCESSES_COUNT; i++) {
             int leftOperand = Utils.getRandomInt(Engine.MIN_RANDOM_INT, Engine.MAX_RANDOM_INT);
             int rightOperand = Utils.getRandomInt(Engine.MIN_RANDOM_INT, Engine.MAX_RANDOM_INT);
-            String statement = leftOperand + " " + rightOperand;
-            int solution = resolveStatement(leftOperand, rightOperand);
-            String answer = String.valueOf(solution);
-            Map<String, String> dataPair = new HashMap<>(1);
-            dataPair.put(statement, answer);
-            gameData.add(dataPair);
+            String question = leftOperand + " " + rightOperand;
+            String correctAnswer = getAnswer(leftOperand, rightOperand);
+            Map<String, String> gameData = new HashMap<>();
+            gameData.put("question", question);
+            gameData.put("answer", correctAnswer);
+            gameDataCollection.add(gameData);
         }
-        Engine.execute(rules, gameData);
+        Engine.execute(ruleMessage, gameDataCollection);
     }
 }

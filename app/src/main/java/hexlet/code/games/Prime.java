@@ -8,31 +8,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Prime game class.
- */
 public final class Prime {
 
     public static void start() {
-        String rules = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-        List<Map<String, String>> gameData = new ArrayList<>(Engine.MAX_SUCCESSES_COUNT);
+        String ruleMessage = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+        List<Map<String, String>> gameDataCollection = new ArrayList<>(Engine.MAX_SUCCESSES_COUNT);
         for (int i = 0; i < Engine.MAX_SUCCESSES_COUNT; i++) {
             int currentRnd = Utils.getRandomInt(Engine.MIN_RANDOM_INT, Engine.MAX_RANDOM_INT);
             String question = String.valueOf(currentRnd);
-            String answer = resolveStatement(currentRnd) ? "yes" : "no";
-            Map<String, String> dataPair = new HashMap<>(1);
-            dataPair.put(question, answer);
-            gameData.add(dataPair);
+            String correctAnswer = isPrime(currentRnd) ? "yes" : "no";
+            Map<String, String> gameData = new HashMap<>();
+            gameData.put("question", question);
+            gameData.put("answer", correctAnswer);
+            gameDataCollection.add(gameData);
         }
-        Engine.execute(rules, gameData);
+        Engine.execute(ruleMessage, gameDataCollection);
     }
 
-    /**
-     * Method determines that number is prime.
-     * @param questNum Question randomly generated number
-     * @return 0 if number is not prime, 1 otherwise
-     */
-    private static boolean resolveStatement(int questNum) {
+    private static boolean isPrime(int questNum) {
         if (questNum < 2) {
             return false;
         }
