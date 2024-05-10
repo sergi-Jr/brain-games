@@ -13,7 +13,7 @@ Games to improve math skills. Include:
   ##### [![Static Badge](https://img.shields.io/badge/prime-yellow.svg)](https://asciinema.org/a/kKGXqOLKM0ASRPjGLVbSXv8I4) Prime game - improve your skill of determining the primary of a number
 
 ### How to use
-Download [zip](https://github.com/sergi-Jr/java-project-61/archive/refs/heads/main.zip). Then unzip into prefered folder.  
+Download [zip](https://github.com/sergi-Jr/brain-games/archive/refs/heads/main.zip). Then unzip into prefered folder.  
 Download [Java](https://www.java.com/ru/download/manual.jsp) for your OS.
 
 Run terminal on your machine and type:
